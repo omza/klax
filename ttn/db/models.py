@@ -20,7 +20,7 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = 'user'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     firstname = Column(String(80), nullable=False)
     email = Column(String(120), unique=True, nullable=False)
     password_hash = Column(String(128))
@@ -46,12 +46,34 @@ class User(Base):
     def admin(self):
         return True
 
+# backends
+'''CREATE TABLE `backend_credentials` (
+  id int(11) NOT NULL AUTO_INCREMENT,	
+  user_id int(11) NOT NULL,
+  backend varchar(10) NOT NULL,
+  backend_user varchar(80) NOT NULL,
+  backend_password varchar(255) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY user_backend (user_id, backend, backend_user),
+  CONSTRAINT `fk_backend_credentials_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;'''
+
+class Backend(Base):
+    __tablename__ = 'backend_credentials'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("user.id"), nullable=False)
+    backend = Column(String(10), nullable=False)
+    backend_user = Column(String(80), nullable=False)
+    backend_password =  Column(String(255), nullable=False)
+
 # Devices
 class Device(Base):
     __tablename__ = 'devices'
     _ticks = 0
 
     device_id = Column(Integer, primary_key=True)
+    backend_id = Column(Integer, ForeignKey("backend_credentials.id"), nullable=False)
     device_extern_id = Column(String(40), nullable=False)
     inserted_at = Column(DateTime)  #: 2019-08-13T08:49:19.096588Z
 
@@ -190,7 +212,7 @@ class Loadprofile(Base):
     register_id = Column(Integer, primary_key=True, autoincrement=False)
     start_at = Column(DateTime, primary_key=True, autoincrement=False) 
 
-    load = Column(Float)
+    consumption = Column(Float)
     meterreading = Column(Float)
     unit = Column(String(5))
     status = Column(Integer, nullable=False)

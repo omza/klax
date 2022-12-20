@@ -1,3 +1,0 @@
-2022-12-20 11:02:57,702 - root - INFO - ----------------------------------------------------------
-2022-12-20 11:02:57,702 - root - INFO - mqtt client start  ....
-2022-12-20 11:02:57,702 - root - DEBUG - ... running in environment {'PATH_LOG': '', 'DOCKER_PATH_LOG': '', 'LOG_FILE': 'klax.log', 'LOG_LEVEL': 10, 'TIMEZONE': 'Europe/Berlin', 'END_DEVICE_ID': 'klax_demo', 'DB_NAME': 'klaxdb', 'DATABASE_URI': 'sqlite:///klaxdb', 'USER_FIRSTNAME': '', 'USER_EMAIL': '', 'USER_PASS': '', 'MQTT_HOST': '', 'MQTT_PORT': 8883, 'MQTT_USER': '', 'MQTT_PASSWORD': '', 'MQTT_TOPIC': '#', 'MQTT_SERVICE': 'TTN', 'DATEFORMAT': '%d.%m.%Y', 'DATETIMEFORMAT': '%d.%m.%Y %H:%M:%S', 'SECRET': 'super-secret-key'}

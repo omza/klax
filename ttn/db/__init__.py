@@ -14,7 +14,7 @@ def init_db():
         create_database(config.DATABASE_URI)
 
     # Instanciate database engine
-    dbengine = create_engine(config.DATABASE_URI, connect_args={'check_same_thread': False})
+    dbengine = create_engine(config.DATABASE_URI)
 
     # Bind Models to Engine, Create Models in DB if not exists
     Base.metadata.create_all(dbengine)
@@ -72,7 +72,7 @@ def init_db():
 def NewSession(): 
 
     # Instanciate database engine
-    dbengine = create_engine(config.DATABASE_URI, connect_args={'check_same_thread': False})
+    dbengine = create_engine(config.DATABASE_URI)
     # Instantiate an return Sessionmakerobject
     dbsession = sessionmaker(bind=dbengine)()
 

@@ -21,16 +21,15 @@ services:
     container_name: klax_ttn
     restart: always
     environment:
-      ELEMENTIOT_API_KEY: ${ELEMENTIOT_API_KEY}
       MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DB_NAME: elementiotconnector
-      MYSQL_DB_FILE: ${MYSQL_DB_FILE}
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_SCHEMA: ${MYSQL_SCHEMA}
       PATH_LOG: ${PATH_LOG}
-      LOGLEVEL_CONSOLE: ${LOGLEVEL_CONSOLE}
-      LOGLEVEL_FILE: ${LOGLEVEL_FILE}
+      LOG_FILE: ${LOG_FILE}
       LOG_LEVEL: ${LOG_LEVEL}
-      MAINLOGGER: ${MAINLOGGER}
+      TIMEZONE: ${TIMEZONE}
     volumes:
       - ${PATH_LOG}:/opt/app/log
     networks:

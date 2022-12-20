@@ -196,7 +196,7 @@ def ttn_klax_parser(topic: str, payload: str):
                                     device_id = device.device_id,
                                     register_id = register_id,
                                     start_at = received_at + timedelta(minutes=-15*index),
-                                    load = 0,
+                                    consumption = 0,
                                     meterreading = value["value"],
                                     unit = unit,
                                     status = status
@@ -210,7 +210,7 @@ def ttn_klax_parser(topic: str, payload: str):
                                     device_id = device.device_id,
                                     register_id = register_id,
                                     start_at = received_at + timedelta(minutes=-15*index),
-                                    load = measurement.value - lastload.meterreading,
+                                    consumption = measurement.value - lastload.meterreading,
                                     meterreading = measurement.value,
                                     unit = unit,
                                     status = status

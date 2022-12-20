@@ -15,39 +15,21 @@ class AppConfiguration(object):
     #
     #  Application Settings
     #
-    PATH_LOG = ''
-    DOCKER_PATH_LOG = ""
+    PATH_LOG = ""
     LOG_FILE = "klax.log"
     LOG_LEVEL = 10 #debug
     TIMEZONE = "Europe/Berlin"
 
     #
-    # The Klax Device
+    # Database Configuration
     #
-    END_DEVICE_ID = 'klax_demo'
+    MYSQL_HOST = 'localhost'
+    MYSQL_PORT = 3306
+    MYSQL_USER = 'admin'
+    MYSQL_PASSWORD = 'password'
+    MYSQL_SCHEMA = 'klax'
 
-    #
-    # SQLLITE Database Configuration
-    #
-    DB_NAME = 'klaxdb'
     DATABASE_URI = ""
-
-    #
-    # Web User
-    #
-    USER_FIRSTNAME = ''
-    USER_EMAIL = ''
-    USER_PASS = '' 
-
-    #
-    # Configure MQTT Service
-    #
-    MQTT_HOST=''
-    MQTT_PORT=8883
-    MQTT_USER=''
-    MQTT_PASSWORD=''
-    MQTT_TOPIC='#'
-    MQTT_SERVICE='TTN'
 
     #
     # Configure Datetime formats
@@ -56,9 +38,11 @@ class AppConfiguration(object):
     DATETIMEFORMAT = '%d.%m.%Y %H:%M:%S'
 
     #
-    # fastapi-login configuration
+    # MQTT TTN 
     #
-    SECRET = 'super-secret-key'
+    MQTT_SERVICE = "TTN"
+    MQTT_HOST = "eu1.cloud.thethings.network"
+    MQTT_PORT = 8883   
 
     def __init__(self):
         """ constructor """
@@ -82,11 +66,14 @@ class AppConfiguration(object):
                     setattr(self, key, default)
 
         # Custom Configuration part
-        if self.DOCKER_PATH_LOG != "":
-            self.PATH_LOG = self.DOCKER_PATH_LOG
-
         self.LOG_FILE = os.path.join(self.PATH_LOG, self.LOG_FILE)
-        self.DATABASE_URI = 'sqlite:///{0}'.format(os.path.join(self.PATH_LOG, self.DB_NAME))
+
+        if self.MYSQL_HOST != '' and self.MYSQL_HOST:
+            self.DATABASE_URI = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_HOST, self.MYSQL_SCHEMA)
+
+        else:
+
+            self.DATABASE_URI = 'sqlite:///{0}'.format(os.path.join(self.PATH_LOG, self.MYSQL_SCHEMA))
         
         """ parse self into dictionary """
 

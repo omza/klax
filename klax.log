@@ -1,0 +1,21 @@
+2022-12-20 14:53:34,742 - root - INFO - ----------------------------------------------------------
+2022-12-20 14:53:34,742 - root - INFO - mqtt client start  ....
+2022-12-20 14:53:34,742 - root - DEBUG - ... running in environment {'PATH_LOG': '/home/omza/klax', 'LOG_FILE': '/home/omza/klax/klax.log', 'LOG_LEVEL': 10, 'TIMEZONE': 'Europe/Berlin', 'MYSQL_HOST': 'localhost', 'MYSQL_PORT': 3306, 'MYSQL_USER': 'admin', 'MYSQL_PASSWORD': 'password', 'MYSQL_SCHEMA': 'klax', 'DATABASE_URI': 'mysql+pymysql://admin:password@localhost/klax', 'DATEFORMAT': '%d.%m.%Y', 'DATETIMEFORMAT': '%d.%m.%Y %H:%M:%S'}
+2022-12-20 14:55:15,180 - root - INFO - ----------------------------------------------------------
+2022-12-20 14:55:15,180 - root - INFO - mqtt client start  ....
+2022-12-20 14:55:15,180 - root - DEBUG - ... running in environment {'PATH_LOG': '/home/omza/klax', 'LOG_FILE': '/home/omza/klax/klax.log', 'LOG_LEVEL': 10, 'TIMEZONE': 'Europe/Berlin', 'MYSQL_HOST': 'localhost', 'MYSQL_PORT': 3306, 'MYSQL_USER': 'admin', 'MYSQL_PASSWORD': 'password', 'MYSQL_SCHEMA': 'klax', 'DATABASE_URI': 'mysql+pymysql://admin:password@localhost/klax', 'DATEFORMAT': '%d.%m.%Y', 'DATETIMEFORMAT': '%d.%m.%Y %H:%M:%S'}
+2022-12-20 15:56:47,566 - root - INFO - ----------------------------------------------------------
+2022-12-20 15:56:47,567 - root - INFO - mqtt client start  ....
+2022-12-20 15:56:47,567 - root - DEBUG - ... running in environment {'PATH_LOG': '/home/omza/klax', 'LOG_FILE': '/home/omza/klax/klax.log', 'LOG_LEVEL': 10, 'TIMEZONE': 'Europe/Berlin', 'MYSQL_HOST': 'localhost', 'MYSQL_PORT': 3306, 'MYSQL_USER': 'admin', 'MYSQL_PASSWORD': 'password', 'MYSQL_SCHEMA': 'klax', 'DATABASE_URI': 'mysql+pymysql://admin:password@localhost/klax', 'DATEFORMAT': '%d.%m.%Y', 'DATETIMEFORMAT': '%d.%m.%Y %H:%M:%S', 'MQTT_SERVICE': 'TTN', 'MQTT_HOST': 'eu1.cloud.thethings.network', 'MQTT_PORT': '8883'}
+2022-12-20 15:58:33,736 - root - INFO - ----------------------------------------------------------
+2022-12-20 15:58:33,736 - root - INFO - mqtt client start  ....
+2022-12-20 15:58:33,736 - root - DEBUG - ... running in environment {'PATH_LOG': '/home/omza/klax', 'LOG_FILE': '/home/omza/klax/klax.log', 'LOG_LEVEL': 10, 'TIMEZONE': 'Europe/Berlin', 'MYSQL_HOST': 'localhost', 'MYSQL_PORT': 3306, 'MYSQL_USER': 'admin', 'MYSQL_PASSWORD': 'password', 'MYSQL_SCHEMA': 'klax', 'DATABASE_URI': 'mysql+pymysql://admin:password@localhost/klax', 'DATEFORMAT': '%d.%m.%Y', 'DATETIMEFORMAT': '%d.%m.%Y %H:%M:%S', 'MQTT_SERVICE': 'TTN', 'MQTT_HOST': 'eu1.cloud.thethings.network', 'MQTT_PORT': '8883'}
+2022-12-20 16:12:42,504 - root - INFO - ----------------------------------------------------------
+2022-12-20 16:12:42,505 - root - INFO - mqtt client start  ....
+2022-12-20 16:12:42,505 - root - DEBUG - ... running in environment {'PATH_LOG': '/home/omza/klax', 'LOG_FILE': '/home/omza/klax/klax.log', 'LOG_LEVEL': 10, 'TIMEZONE': 'Europe/Berlin', 'MYSQL_HOST': 'localhost', 'MYSQL_PORT': 3306, 'MYSQL_USER': 'admin', 'MYSQL_PASSWORD': 'password', 'MYSQL_SCHEMA': 'klax', 'DATABASE_URI': 'mysql+pymysql://admin:password@localhost/klax', 'DATEFORMAT': '%d.%m.%Y', 'DATETIMEFORMAT': '%d.%m.%Y %H:%M:%S', 'MQTT_SERVICE': 'TTN', 'MQTT_HOST': 'eu1.cloud.thethings.network', 'MQTT_PORT': 8883}
+2022-12-20 16:12:50,496 - root - DEBUG - Connected with result code 0
+2022-12-20 16:50:09,023 - root - INFO - ----------------------------------------------------------
+2022-12-20 16:50:09,024 - root - INFO - mqtt client start  ....
+2022-12-20 16:50:09,024 - root - DEBUG - ... running in environment {'PATH_LOG': '/home/omza/klax', 'LOG_FILE': '/home/omza/klax/klax.log', 'LOG_LEVEL': 10, 'TIMEZONE': 'Europe/Berlin', 'MYSQL_HOST': 'localhost', 'MYSQL_PORT': 3306, 'MYSQL_USER': 'admin', 'MYSQL_PASSWORD': 'password', 'MYSQL_SCHEMA': 'klax', 'DATABASE_URI': 'mysql+pymysql://admin:password@localhost/klax', 'DATEFORMAT': '%d.%m.%Y', 'DATETIMEFORMAT': '%d.%m.%Y %H:%M:%S', 'MQTT_SERVICE': 'TTN', 'MQTT_HOST': 'eu1.cloud.thethings.network', 'MQTT_PORT': 8883}
+2022-12-20 16:50:09,332 - root - DEBUG - Connected with result code 0
+2022-12-20 16:50:41,283 - root - INFO - ttn collector stopped -----------------
