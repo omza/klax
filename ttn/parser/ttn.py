@@ -249,6 +249,6 @@ def ttn_klax_parser(topic: str, payload: str):
 
 
         # close dbsession
-        dbsession.close_all()
+        dbsession.close()
     
     return

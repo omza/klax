@@ -72,9 +72,10 @@ def main():
 
         client.tls_set()
         client.username_pw_set(username=mqtt_credential.backend_user, password=mqtt_credential.backend_password)
-
+ 
         clients.append(client)
 
+    dbsession.close()
 
     # mqtt loop
     for client in clients:
@@ -94,7 +95,7 @@ def main():
     logging.info(f'mqtt client stopped  ....')
     logging.info('----------------------------------------------------------')
 
-    
+
 """ run main if not imported """
 if __name__ == '__main__':
     main()
