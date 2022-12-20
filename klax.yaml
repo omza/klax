@@ -1,0 +1,66 @@
+version: '3.7'
+
+services:
+
+  #db:
+  #  image: mariadb
+  #  container_name: mariadb
+  #  restart: always
+  #  environment:
+  #    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #  volumes:
+  #    - ${MYSQL_DB_FILE}:/var/lib/mysql
+  #    - ${MYSQL_DB_CNF}:/etc/mysql/conf.d
+  #  networks:
+  #    - ${APP_NETWORK:-smartenv}
+
+  ttn:
+    build:
+      context: ./ttn
+    image: klax_ttn:local
+    container_name: klax_ttn
+    restart: always
+    environment:
+      ELEMENTIOT_API_KEY: ${ELEMENTIOT_API_KEY}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DB_NAME: elementiotconnector
+      MYSQL_DB_FILE: ${MYSQL_DB_FILE}
+      PATH_LOG: ${PATH_LOG}
+      LOGLEVEL_CONSOLE: ${LOGLEVEL_CONSOLE}
+      LOGLEVEL_FILE: ${LOGLEVEL_FILE}
+      LOG_LEVEL: ${LOG_LEVEL}
+      MAINLOGGER: ${MAINLOGGER}
+    volumes:
+      - ${PATH_LOG}:/opt/app/log
+    networks:
+      - ${APP_NETWORK:-smartenv}
+    depends_on:
+      #- db
+
+
+
+  web:
+    build:
+      context: ./web
+    image: klax_web:local
+    container_name: klax_web
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DB_NAME: smartenv
+      FLASK_APP: ${FLASK_APP:-app.py}
+      FLASK_ENV: ${FLASK_ENV:-production}
+      LOG_LEVEL: ${LOG_LEVEL}
+      SECRET_KEY: ${FLASK_SECRET_KEY}
+      SERVER_NAME: ${SERVER_NAME}
+      PREFERRED_URL_SCHEME: ${SERVER_NAME}
+    volumes:
+      - ${PATH_LOG}:/opt/app/log
+    networks:
+      - ${APP_NETWORK:-smartenv}
+    depends_on:
+      - ttn
