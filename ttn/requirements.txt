@@ -1,0 +1,10 @@
+paho-mqtt
+PyMySQL
+python-dateutil
+python-dotenv
+python-multipart
+pytz
+SQLAlchemy
+SQLAlchemy-Utils
+Werkzeug
+iso8601
