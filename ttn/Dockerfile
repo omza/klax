@@ -11,29 +11,23 @@ ADD . /app
 RUN pip install --no-cache-dir --upgrade pip \
     pip install --no-cache-dir -r requirements.txt
 
-# Local log location & Environments
+# Environments
 # ----------------------------------------------------------
-ENV DOCKER_PATH_LOG=/var/opt/klax
-RUN mkdir -p ${DOCKER_PATH_LOG}
 
 ENV PATH_LOG=${PATH_LOG} \
     LOG_FILE=${LOG_FILE} \
     LOG_LEVEL=${LOG_LEVEL} \
-    END_DEVICE_ID=${END_DEVICE_ID} \
-    DB_NAME=${DB_NAME} \
-    USER_FIRSTNAME=${USER_FIRSTNAME} \
-    USER_EMAIL=${USER_EMAIL} \
-    USER_PASS=${USER_PASS} \
-    MQTT_SERVICE=${MQTT_SERVICE} \
-    MQTT_HOST=${MQTT_HOST} \
-    MQTT_PORT=${MQTT_PORT} \
-    MQTT_USER=${MQTT_USER} \
-    MQTT_PASSWORD=${MQTT_PASSWORD} \
-    MQTT_TOPIC=${MQTT_TOPIC} \
-    FORWARDED_ALLOW_IPS={$FORWARDED_ALLOW_IPS}
+    TIMEZONE=${TIMEZONE} \
+    MYSQL_HOST=${MYSQL_HOST} \
+    MYSQL_PORT=${MYSQL_PORT} \
+    MYSQL_USER=${MYSQL_USER} \
+    MYSQL_PASSWORD=${MYSQL_PASSWORD} \
+    MYSQL_SCHEMA=${MYSQL_SCHEMA} 
 
-#VOLUME
-VOLUME ${DOCKER_PATH_LOG}
+# Create local log location and expose as Volume
+# ----------------------------------------------------------
+RUN mkdir -p ${PATH_LOG}
+VOLUME ${PATH_LOG}
 
-# run the command to start uvicorn
-CMD ["uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "83"]
+# run the command to start worker process
+CMD ["python", "main.py"]

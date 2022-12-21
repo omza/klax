@@ -2,17 +2,15 @@ version: '3.7'
 
 services:
 
-  #db:
-  #  image: mariadb
-  #  container_name: mariadb
-  #  restart: always
-  #  environment:
-  #    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #  volumes:
-  #    - ${MYSQL_DB_FILE}:/var/lib/mysql
-  #    - ${MYSQL_DB_CNF}:/etc/mysql/conf.d
-  #  networks:
-  #    - ${APP_NETWORK:-smartenv}
+  db:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ${MYSQL_DB_FILE}:/var/lib/mysql
+      - ${MYSQL_DB_CNF}:/etc/mysql/conf.d
 
   ttn:
     build:
@@ -35,7 +33,7 @@ services:
     networks:
       - ${APP_NETWORK:-smartenv}
     depends_on:
-      #- db
+      - db
 
 
 
@@ -58,8 +56,7 @@ services:
       SERVER_NAME: ${SERVER_NAME}
       PREFERRED_URL_SCHEME: ${SERVER_NAME}
     volumes:
-      - ${PATH_LOG}:/opt/app/log
-    networks:
-      - ${APP_NETWORK:-smartenv}
+      - ${PATH_LOG}:/var/opt/app/log
     depends_on:
+      - db
       - ttn

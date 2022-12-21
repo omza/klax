@@ -75,5 +75,6 @@ def NewSession():
     dbengine = create_engine(config.DATABASE_URI)
     # Instantiate an return Sessionmakerobject
     dbsession = sessionmaker(bind=dbengine)()
+    dbsession.expire_on_commit = False
 
     return dbsession

@@ -74,6 +74,7 @@ def main():
         client.username_pw_set(username=mqtt_credential.backend_user, password=mqtt_credential.backend_password)
  
         clients.append(client)
+        client = None
 
     dbsession.close()
 
