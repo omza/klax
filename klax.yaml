@@ -7,10 +7,10 @@ services:
     container_name: mariadb
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    volumes:
-      - ${MYSQL_DB_FILE}:/var/lib/mysql
-      - ${MYSQL_DB_CNF}:/etc/mysql/conf.d
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+    - 127.0.0.1:3306:3306
+
 
   ttn:
     build:
@@ -29,34 +29,32 @@ services:
       LOG_LEVEL: ${LOG_LEVEL}
       TIMEZONE: ${TIMEZONE}
     volumes:
-      - ${PATH_LOG}:/opt/app/log
-    networks:
-      - ${APP_NETWORK:-smartenv}
-    depends_on:
-      - db
-
-
-
-  web:
-    build:
-      context: ./web
-    image: klax_web:local
-    container_name: klax_web
-    restart: always
-    ports:
-      - "5000:5000"
-    environment:
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DB_NAME: smartenv
-      FLASK_APP: ${FLASK_APP:-app.py}
-      FLASK_ENV: ${FLASK_ENV:-production}
-      LOG_LEVEL: ${LOG_LEVEL}
-      SECRET_KEY: ${FLASK_SECRET_KEY}
-      SERVER_NAME: ${SERVER_NAME}
-      PREFERRED_URL_SCHEME: ${SERVER_NAME}
-    volumes:
       - ${PATH_LOG}:/var/opt/app/log
     depends_on:
       - db
-      - ttn
+
+
+
+  #web:
+  #  build:
+  #    context: ./web
+  #  image: klax_web:local
+  # container_name: klax_web
+  #  restart: always
+  #  ports:
+  #    - "5000:5000"
+  #  environment:
+  #    MYSQL_HOST: ${MYSQL_HOST}
+  #    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #    MYSQL_DB_NAME: smartenv
+  #    FLASK_APP: ${FLASK_APP:-app.py}
+  #    FLASK_ENV: ${FLASK_ENV:-production}
+   #   LOG_LEVEL: ${LOG_LEVEL}
+   #   SECRET_KEY: ${FLASK_SECRET_KEY}
+  #    SERVER_NAME: ${SERVER_NAME}
+  #    PREFERRED_URL_SCHEME: ${SERVER_NAME}
+  #  volumes:
+  #    - ${PATH_LOG}:/var/opt/app/log
+  #  depends_on:
+  #    - db
+  #    - ttn

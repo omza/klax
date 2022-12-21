@@ -23,7 +23,7 @@ def init_db():
     # Instantiate an return Sessionmakerobject
     dbsession = sessionmaker(bind=dbengine)()
 
-
+    """
     # Create User
     user =  dbsession.query(User).first()
     if not user:
@@ -63,9 +63,9 @@ def init_db():
         dbsession.add(device)
         dbsession.commit()
         logging.debug(f"Device {device} created")        
+    """
 
-
-    dbsession.close_all()
+    dbsession.close()
 
     return 
 

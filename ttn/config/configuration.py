@@ -19,6 +19,7 @@ class AppConfiguration(object):
     LOG_FILE = "klax.log"
     LOG_LEVEL = 10 #debug
     TIMEZONE = "Europe/Berlin"
+    CONTAINER_PATH_LOG = ""
 
     #
     # Database Configuration
@@ -66,7 +67,10 @@ class AppConfiguration(object):
                     setattr(self, key, default)
 
         # Custom Configuration part
-        self.LOG_FILE = os.path.join(self.PATH_LOG, self.LOG_FILE)
+        if self.CONTAINER_PATH_LOG != "" and self.CONTAINER_PATH_LOG:
+            self.LOG_FILE = os.path.join(self.CONTAINER_PATH_LOG, self.LOG_FILE)
+        else:
+            self.LOG_FILE = os.path.join(self.PATH_LOG, self.LOG_FILE)
 
         if self.MYSQL_HOST != '' and self.MYSQL_HOST:
             self.DATABASE_URI = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_HOST, self.MYSQL_SCHEMA)

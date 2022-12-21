@@ -26,8 +26,9 @@ ENV PATH_LOG=${PATH_LOG} \
 
 # Create local log location and expose as Volume
 # ----------------------------------------------------------
-RUN mkdir -p ${PATH_LOG}
-VOLUME ${PATH_LOG}
+ENV CONTAINER_PATH_LOG=/var/opt/app/log
+RUN mkdir -p ${CONTAINER_PATH_LOG}
+VOLUME ${CONTAINER_PATH_LOG}
 
 # run the command to start worker process
 CMD ["python", "main.py"]
