@@ -72,7 +72,7 @@ class AppConfiguration(object):
 
         if self.MYSQL_HOST != '' and self.MYSQL_HOST:
             #self.DATABASE_URI = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_HOST, self.MYSQL_SCHEMA)
-            self.DATABASE_URI = "mysql://{0}:{1}@{2}/{3}".format(self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_HOST, self.MYSQL_SCHEMA)
+            self.DATABASE_URI = "mysql://{0}:{1}@{2}:{3}/{4}".format(self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_HOST, self.MYSQL_PORT, self.MYSQL_SCHEMA)
         else:
 
             self.DATABASE_URI = 'sqlite:///{0}'.format(os.path.join(self.PATH_LOG, self.MYSQL_SCHEMA))
