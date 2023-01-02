@@ -38,8 +38,6 @@ services:
     image: klax_api:local
     container_name: klax_api
     restart: always
-    ports:
-      - "85:85"
     environment:
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_PORT: ${MYSQL_PORT:-3306}
