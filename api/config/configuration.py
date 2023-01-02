@@ -79,7 +79,7 @@ class AppConfiguration(object):
         
         """ parse self into dictionary """
 
-
+        
 
         for key, value in vars(self).items():
             if not key.startswith('_') and key != '':

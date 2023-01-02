@@ -13,6 +13,7 @@ from routers import auth, devices, users
 # Fast Api
 logging.info('----------------------------------------------------------')
 logging.info(f'fast api start  ....')
+logging.debug(config.DATABASE_URI)
 
 description = """
 The KLAX makes the values of modern electricity meters immediately available and thus helps to implement effective energy-saving measures and create transparency. 
