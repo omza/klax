@@ -5,6 +5,7 @@
 import datetime
 import os
 from tools.convert import safe_cast
+import urllib.parse
 
 
 class AppConfiguration(object):
@@ -72,6 +73,7 @@ class AppConfiguration(object):
 
         if self.MYSQL_HOST != '' and self.MYSQL_HOST:
             #self.DATABASE_URI = 'mysql+pymysql://{0}:{1}@{2}/{3}'.format(self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_HOST, self.MYSQL_SCHEMA)
+            self.MYSQL_PASSWORD = urllib.parse.quote_plus(self.MYSQL_PASSWORD)
             self.DATABASE_URI = "mysql://{0}:{1}@{2}:{3}/{4}".format(self.MYSQL_USER, self.MYSQL_PASSWORD, self.MYSQL_HOST, self.MYSQL_PORT, self.MYSQL_SCHEMA)
         else:
 
