@@ -18,13 +18,14 @@ Base = declarative_base()
 
 # Users
 class User(Base):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     firstname = Column(String(80), nullable=False)
     email = Column(String(120), unique=True, nullable=False)
     password_hash = Column(String(128))
-    #cookies_check = Column(Boolean, default=False)
+    admin_role = Column(Boolean, default=False)
+    active = Column(Boolean, default=False)
 
     def __str__(self):
         return f"id: {self.id}, firstname: {self.firstname}, email: {self.email}"
@@ -45,7 +46,7 @@ class User(Base):
 
     def admin(self):
         return True
-
+    
 # backends
 '''CREATE TABLE `backend_credentials` (
   id int(11) NOT NULL AUTO_INCREMENT,	
@@ -62,7 +63,7 @@ class Backend(Base):
     __tablename__ = 'backend_credentials'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    user_id = Column(Integer, ForeignKey("user.id"), nullable=False)
+    user_id = Column(Integer, nullable=False)
     backend = Column(String(10), nullable=False)
     backend_user = Column(String(80), nullable=False)
     backend_password =  Column(String(255), nullable=False)
@@ -73,7 +74,7 @@ class Device(Base):
     _ticks = 0
 
     device_id = Column(Integer, primary_key=True)
-    backend_id = Column(Integer, ForeignKey("backend_credentials.id"), nullable=False)
+    backend_id = Column(Integer, nullable=False)
     device_extern_id = Column(String(40), nullable=False)
     inserted_at = Column(DateTime)  #: 2019-08-13T08:49:19.096588Z
 

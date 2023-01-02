@@ -1,0 +1,11 @@
+fastapi
+tortoise-orm
+typing_extensions
+bcrypt
+iso8601
+PyJWT
+aiomysql
+pytz
+uvicorn
+passlib
+python-multipart

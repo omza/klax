@@ -32,28 +32,28 @@ services:
     depends_on:
       - db
 
-
-
-  #web:
-  #  build:
-  #    context: ./web
-  #  image: klax_web:local
-  # container_name: klax_web
-  #  restart: always
-  #  ports:
-  #    - "5000:5000"
-  #  environment:
-  #    MYSQL_HOST: ${MYSQL_HOST}
-  #    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #    MYSQL_DB_NAME: smartenv
-  #    FLASK_APP: ${FLASK_APP:-app.py}
-  #    FLASK_ENV: ${FLASK_ENV:-production}
-   #   LOG_LEVEL: ${LOG_LEVEL}
-   #   SECRET_KEY: ${FLASK_SECRET_KEY}
-  #    SERVER_NAME: ${SERVER_NAME}
-  #    PREFERRED_URL_SCHEME: ${SERVER_NAME}
-  #  volumes:
-  #    - ${PATH_LOG}:/var/opt/app/log
-  #  depends_on:
-  #    - db
-  #    - ttn
+  api:
+    build:
+      context: ./api
+    image: klax_api:local
+    container_name: klax_api
+    restart: always
+    ports:
+      - "85:85"
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_SCHEMA: ${MYSQL_SCHEMA}
+      PATH_LOG: ${PATH_LOG}
+      LOG_FILE: ${LOG_FILE}
+      LOG_LEVEL: ${LOG_LEVEL}
+      TIMEZONE: ${TIMEZONE}
+      FORWARDED_ALLOW_IPS: ${FORWARDED_ALLOW_IPS}
+      SECRET: ${SECRET}
+    volumes:
+      - ${PATH_LOG}:/var/opt/app/log
+    depends_on:
+      - db
+      - ttn
