@@ -1,0 +1,32 @@
+# This is the .env file to set up your KLAX Simple Dashboard App
+
+#
+#  Application Settings
+#
+PATH_LOG=/home/klax/klax
+LOG_FILE=klax.log
+LOG_LEVEL=10
+TIMEZONE=Europe/Berlin
+
+#
+# Database Configuration
+#
+MYSQL_HOST=db
+MYSQL_PORT=3306
+MYSQL_USER=root
+MYSQL_PASSWORD=password
+MYSQL_SCHEMA=klax
+
+
+#
+# behind a proxy with tls termination
+#
+FORWARDED_ALLOW_IPS=*
+
+
+#
+# Application Secret
+#
+SECRET='super_secret'
+
+
