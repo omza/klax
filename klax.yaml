@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
 
-  db:
+  mariadb:
     image: mariadb
     container_name: mariadb
     restart: always
@@ -30,7 +30,7 @@ services:
     volumes:
       - ${PATH_LOG}:/var/opt/app/log
     depends_on:
-      - db
+      - mariadb
 
   api:
     build:
@@ -53,5 +53,5 @@ services:
     volumes:
       - ${PATH_LOG}:/var/opt/app/log
     depends_on:
-      - db
+      - mariadb
       - ttn
