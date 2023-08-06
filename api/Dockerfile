@@ -1,5 +1,5 @@
 # Use the Python3.10 image
-FROM python:3.10-buster
+FROM python:3.8-buster
 
 # Set the working directory to /app
 WORKDIR /app
@@ -36,4 +36,4 @@ VOLUME ${CONTAINER_PATH_LOG}
 VOLUME ${CONTAINER_PATH_LOG}
 
 # run the command to start uvicorn
-CMD ["uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "85"]
+CMD ["uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]
