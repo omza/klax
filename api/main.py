@@ -23,6 +23,7 @@ The determined measured values are available in the LoRaWAN backend shortly afte
 This API offers CRUD Operations for Mobile or Webapps to configure your Klax Device and handle your Energy Data.
 """
 
+
 app = FastAPI(
     title="MyKlax Api",
     description=description,
