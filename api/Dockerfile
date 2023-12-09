@@ -36,4 +36,4 @@ VOLUME ${CONTAINER_PATH_LOG}
 VOLUME ${CONTAINER_PATH_LOG}
 
 # run the command to start uvicorn
-CMD ["uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app"]
