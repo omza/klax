@@ -4,13 +4,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from config import config, logging
 from tortoise.contrib.fastapi import register_tortoise
 
-
-
 # fastapi routers
 from routers import auth, devices, users
 
 
-# Fast Api
+# ? Fast Api
+# TODO set better log level
+""" * test
+    ? test
+    TODO test
+    ! Test
+    
+"""
 logging.info('----------------------------------------------------------')
 logging.info(f'fast api start  ....')
 logging.debug(config.DATABASE_URI)
@@ -22,7 +27,6 @@ The determined measured values are available in the LoRaWAN backend shortly afte
 
 This API offers CRUD Operations for Mobile or Webapps to configure your Klax Device and handle your Energy Data.
 """
-
 
 app = FastAPI(
     title="MyKlax Api",
